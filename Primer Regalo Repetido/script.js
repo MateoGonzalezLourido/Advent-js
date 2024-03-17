@@ -1,15 +1,13 @@
 //codigo para el reto js->  https://adventjs.dev/es/challenges/2023/1
 function findFirstRepeated(gifts) {
-    let cadena = gifts
     let n_repetidos = []
-    cadena.forEach((item) => {
-        if (item != "") {
+    gifts.forEach((numeroMirar) => {
+        if (numeroMirar != "") {
             const indices = []
-            const numeroMirar = item
-            for (let j = 0; j < cadena.length; j++) {
-                if (numeroMirar == cadena[j]) {
+            for (let j = 0; j < gifts.length; j++) {
+                if (numeroMirar == gifts[j]) {
                     indices.push(j)
-                    cadena[j] = ""//vacio
+                    gifts[j] = ""//vacio
                 }
             }
             if (indices.length > 1) {//se repite
@@ -20,7 +18,7 @@ function findFirstRepeated(gifts) {
     if (n_repetidos.length == 0) {//no hay repetidos
         return -1
     }
-    else if (n_repetidos.length == 1) {//solo hay uun repetido
+    else if (n_repetidos.length == 1) {//solo hay un repetido
         return n_repetidos[0][0]
     }
     else {//mas de un repetido
