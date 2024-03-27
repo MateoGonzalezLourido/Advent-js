@@ -1,23 +1,21 @@
 //codigo para el reto js-> https://adventjs.dev/es/challenges/2023/2
 
 function manufacture(gifts, materials) {
-    const materialesUsar = materials.split('')
-    let jugetesCreables = []
+    const jugetesCreables = []
     gifts.forEach(juguete => {
         const caracteres = juguete.split('')
-        let materialesDisponibles = 0
-        caracteres.forEach(letra => {
-            for (let i = 0; i < materialesUsar.length; i++) {
-                if (letra == materialesUsar[i]) {
-                    materialesDisponibles++
-                    break
-                }
+        let fabricable = true
+        for (let i = 0; i < caracteres.length; i++) {
+            const existe = materials.indexOf(caracteres[i])
+            if (existe === -1) {
+                fabricable = false
+                break
             }
-        })
-        if (caracteres.length == materialesDisponibles) {
+        }
+        if (fabricable) {
             jugetesCreables.push(juguete)
         }
-    });
+    })
     return jugetesCreables
 }
 const gifts = ['tren', 'oso', 'pelota']
