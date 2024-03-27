@@ -1,22 +1,21 @@
 //codigo del reto js-> https://adventjs.dev/es/challenges/2023/6
 
 function maxDistance(movements) {
-    let derecha = 0
-    let izquierda = 0
+    let resultado = 0
     let comodin = 0
-    let movimientos = movements.split('')
+    const movimientos = movements.split('')
     movimientos.forEach(mov => {
-        if (mov == ">") {
-            derecha++
+        if (mov === ">") {
+            resultado--
         }
-        else if (mov == "<") {
-            izquierda++
+        else if (mov === "<") {
+            resultado++
         }
         else {
             comodin++
         }
     })
-    const resultado = (derecha - izquierda) >= 0 ? (derecha - izquierda) : -(derecha - izquierda)
-    return resultado + comodin
+    resultado = Math.abs(resultado) + comodin
+    return resultado
 }
 console.log(maxDistance('<<**>>'))
