@@ -1,8 +1,8 @@
 //codigo para el reto js-> https://adventjs.dev/es/challenges/2023/8
 
 function organizeGifts(gifts) {
-    let caracteres = gifts.split('')
-    let paquetes = []
+    const caracteres = gifts.split('')
+    const paquetes = []
     let texto = ''
     let number = ''
     caracteres.forEach(leter => {
@@ -10,7 +10,7 @@ function organizeGifts(gifts) {
             texto += leter
         }
         else {
-            if (texto != '') {
+            if (texto !== '') {
                 paquetes.push([number, texto])
                 number = leter
                 texto = ''
@@ -25,28 +25,19 @@ function organizeGifts(gifts) {
     paquetes.forEach(paquete => {
         let numero = paquete[0]
         const letra = paquete[1]
+        let n_bucle
         //50 [letra]
-        let n_bucle = Math.trunc(numero / 50)
-        for (let i = 0; i < n_bucle; i++) {
-            empaquetados += `[${letra}]`
-        }
+        n_bucle = Math.trunc(numero / 50)
+        empaquetados += `[${letra}]`.repeat(n_bucle)
         numero -= n_bucle * 50
         //10 {letra}
         n_bucle = Math.trunc(numero / 10)
-        for (let i = 0; i < n_bucle; i++) {
-            empaquetados += `{${letra}}`
-        }
+        empaquetados += `{${letra}}`.repeat(n_bucle)
         numero -= n_bucle * 10
         //(letra*sobrantes)
         if (numero > 0) {
-            n_bucle = numero
-            empaquetados += '('
-            for (let i = 0; i < n_bucle; i++) {
-                empaquetados += letra
-            }
-            empaquetados += ')'
+            empaquetados += '(' + `${letra}`.repeat(numero) + ')'
         }
-
     })
     return empaquetados
 }
