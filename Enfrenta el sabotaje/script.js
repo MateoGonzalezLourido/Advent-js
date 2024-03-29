@@ -8,13 +8,13 @@ function revealSabotage(store) {
             if (store[i][j] !== '*') {
                 //superior
                 if (i > 0) {
-                    if (store[i - 1][j - 1] === '*') {
+                    if (j > 0 && store[i - 1][j - 1] === '*') {
                         regalosToca++
                     }
                     if (store[i - 1][j] === '*') {
                         regalosToca++
                     }
-                    if (store[i - 1][j + 1] === '*') {
+                    if (j < store[i].length - 1 && store[i - 1][j + 1] === '*') {
                         regalosToca++
                     }
                 }
@@ -31,13 +31,13 @@ function revealSabotage(store) {
                 }
                 //inferior
                 if (i < store.length - 1) {
-                    if (store[i + 1][j - 1] === '*') {
+                    if (j > 0 && store[i + 1][j - 1] === '*') {
                         regalosToca++
                     }
                     if (store[i + 1][j] === '*') {
                         regalosToca++
                     }
-                    if (store[i + 1][j + 1] === '*') {
+                    if (j < store[i].length - 1 && store[i + 1][j + 1] === '*') {
                         regalosToca++
                     }
                 }
@@ -50,3 +50,11 @@ function revealSabotage(store) {
     }
     return storeDevolver
 }
+console.log(revealSabotage([
+    ['*', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', '*', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', '*']
+])
+)

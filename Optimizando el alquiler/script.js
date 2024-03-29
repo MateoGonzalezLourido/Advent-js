@@ -1,8 +1,8 @@
 //codigo del reto js->https://adventjs.dev/es/challenges/2023/17
 
 function optimizeIntervals(intervals) {
-    intervals.sort((a, b) => a[0] - b[0]);
-    let intervalos = []
+    intervals.sort((a, b) => a[0] - b[0])
+    const intervalos = []
     let intervalo = intervals[0]
     for (let i = 1; i < intervals.length; i++) {
         if (intervalo[1] >= intervals[i][0]) {
