@@ -3,6 +3,7 @@ function calculateTime(deliveries) {
     let horaTotal = 0
     let minutoTotal = 0
     let segundoTotal = 0
+
     deliveries.forEach(time => {
         const data = time.split(':')
         horaTotal += Number(data[0])
@@ -17,6 +18,7 @@ function calculateTime(deliveries) {
         horaTotal += Math.trunc(minutoTotal / 60)
         minutoTotal = minutoTotal % 60
     }
+
     if (horaTotal < 7) {
         let horaRest = 7 - horaTotal
         let minRest = (minutoTotal > 0) ? 60 - minutoTotal : minutoTotal
