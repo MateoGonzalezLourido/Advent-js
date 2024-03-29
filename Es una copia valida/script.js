@@ -2,29 +2,20 @@
 
 function checkIsValidCopy(original, copy) {
     const caractDeg = ['#', '+', ':', '.', ' ']
-    let copia = true
     for (let i = 0; i < original.length; i++) {
-        if (original[i] == ' ') {//espacio
-            if (original[i] != copy[i]) {
-                copia = false
-                break
-            }
-        }
-        else if (!isNaN(Number(original[i]))) {//numero
-            if (copy[i] != original[i]) {
-                copia = false
-                break
+        if ((original[i] === ' ') || (original[i] >= 0)) {//espacio/numeros
+            if (original[i] !== copy[i]) {
+                return false
             }
         }
         else {//letras/simbolos
-            if (original[i] != copy[i]) {
+            if (original[i] !== copy[i]) {
                 if ((/[a-zA-Z]/.test(original[i]))) {
-                    if (original[i].toLowerCase() != copy[i]) {
+                    if (original[i].toLowerCase() !== copy[i]) {
                         //comprobar si esta degradado
                         const existe = caractDeg.indexOf(copy[i])
                         if (existe == -1) {
-                            copia = false
-                            break
+                            return false
                         }
                     }
                 }
@@ -32,18 +23,13 @@ function checkIsValidCopy(original, copy) {
                     //comprobar si esta degradado
                     const existeOriginal = caractDeg.indexOf(original[i])
                     const existeCopia = caractDeg.indexOf(copy[i])
-                    if (existeCopia == -1) {
-                        copia = false
-                        break
-                    }
-                    else if (existeOriginal >= existeCopia) {
-                        copia = false
-                        break
+                    if ((existeCopia === -1) || (existeOriginal >= existeCopia)) {
+                        return false
                     }
                 }
             }
         }
     }
-    return copia
+    return true
 }
 console.log(checkIsValidCopy('s+#:.#c:. s', 's#+:.#c:. s'))
