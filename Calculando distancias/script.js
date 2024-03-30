@@ -2,9 +2,10 @@
 
 function travelDistance(map) {
     let pasosTotales = 0
-    let mapa = map.split('\n')
+    const mapa = map.split('\n')
     let posicionSanta = []
-    let posicionNiños = []
+    const posicionNiños = []
+
     for (let i = 0; i < mapa.length; i++) {
         for (let j = 0; j < mapa[i].length; j++) {
             if (mapa[i][j] > 0) {
@@ -15,14 +16,12 @@ function travelDistance(map) {
             }
         }
     }
-    posicionNiños.sort(function (a, b) {
-        return a[0] - b[0]
-    })
-    posicionNiños.forEach(localizacion => {
-        const dpX = Math.abs(localizacion[2] - posicionSanta[1])
-        const dpY = Math.abs(localizacion[1] - posicionSanta[0])
-        posicionSanta = [localizacion[1], localizacion[2]]
+    posicionNiños.sort((a, b) => { return a[0] - b[0] })
+    posicionNiños.forEach(loc => {
+        const dpX = Math.abs(loc[2] - posicionSanta[1])
+        const dpY = Math.abs(loc[1] - posicionSanta[0])
         pasosTotales += dpX + dpY
+        posicionSanta = [loc[1], loc[2]]
     })
     return pasosTotales
 }

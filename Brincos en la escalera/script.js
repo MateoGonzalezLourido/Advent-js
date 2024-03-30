@@ -5,7 +5,7 @@ function getStaircasePaths(steps, maxJump) {
     function generatePaths(currentPath, remainingSteps) {
         if (remainingSteps === 0) {
             paths.push(currentPath.slice())
-            return;
+            return
         }
 
         for (let jump = 1; jump <= maxJump && jump <= remainingSteps; jump++) {
